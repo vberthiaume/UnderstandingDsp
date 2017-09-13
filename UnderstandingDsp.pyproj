@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ba0032d8-a533-473c-bba1-90dbbc9a7cb1</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>ch1\ch1.py</StartupFile>
+    <StartupFile>ch1\1.14.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,7 +22,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ch1\ch1.py" />
+    <Compile Include="ch1\1.14.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ch1\1.8.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ch1\1.6-1.7.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ch1\" />
