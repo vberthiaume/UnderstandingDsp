@@ -2,8 +2,6 @@ import numpy as np
 
 
 def DFT(xn, N):
-    #arrays = [xn*np.cos(2*np.pi*n*m/N) - 1j*xn*np.sin(2*np.pi*n*m/N) for n in np.arange(N)]
-    #return np.sum(arrays, 1)
     Xm = []
     for m in np.arange(N):
         xm = 0
@@ -21,9 +19,10 @@ n = np.arange(N)
 
 xn = np.sin(2*np.pi*fo*n/fs) + .5*np.sin(2*np.pi*2*fo*n/fs + 3*np.pi/4)
 
-print "xn:"
+print "x(n):"
 print xn
 
+print "\nX(n)"
 Xn = DFT(xn, N)
 for xn in Xn:
     print('{:.4f}'.format(xn))
