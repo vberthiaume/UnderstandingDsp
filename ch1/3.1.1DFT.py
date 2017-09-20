@@ -17,11 +17,11 @@ def DFT(xn, N):
         
     return Xm
 
-#fo = 1300
-#fs = 8000
-#N = 8
-#n = np.arange(N)
-#xn = np.sin(2*np.pi*fo*n/fs) + .5*np.sin(2*np.pi*2*fo*n/fs + 3*np.pi/4)
+fo = 1000
+fs = 8000
+N = 8
+n = np.arange(N)
+xn = np.sin(2*np.pi*fo*n/fs) + .5*np.sin(2*np.pi*2*fo*n/fs + 3*np.pi/4)
 
 #xn = 2*np.cos(2*np.pi*3*1500*n/4000 + np.pi/4)
 #xn = [9,9,9,9,9,9,9,9]
@@ -29,26 +29,24 @@ def DFT(xn, N):
 #xn = [0,1,0,0,0,0,0,0]
 
 #define xn
-fs = 8000
-N = 8
+#fs = 8000
+#N = 8
 
-Ao = 2
-k = 3
-fo = k*fs/N
-phi = 0 #np.pi/4
+#Ao = 2
+#k = 3
+#fo = k*fs/N
+#phi = 0 #np.pi/4
 
-n = np.arange(N)
-xn = Ao * np.cos( 2*np.pi * fo * n/fs + phi )
+#n = np.arange(N)
+#xn = Ao * np.cos( 2*np.pi * fo * n/fs + phi )
 
 #do DFT
 Xn = DFT(xn, N)
 XnMag = np.absolute(Xn)
-XnPhase = [np.arctan(np.imag(x) / np.real(x)) for x in Xn]
+XnPhase = np.angle(Xn)
 
 #print stuff
-print "x(n):"
-print xn
-
+print "x(n):", xn
 print "\nX(n)"
 for x in Xn:
     print('{:.4f}'.format(x))
