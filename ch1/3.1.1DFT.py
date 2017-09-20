@@ -1,5 +1,11 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
+def plotStem(axarr, x, y, title):
+    markerline, stemlines, baseline = axarr.stem(x, y, '-.')
+    axarr.set_xlim([min(x)-1,max(x)+1])
+    axarr.set_ylim([min(y)-1,max(y)+1])
+    axarr.set_title(title)
 
 def DFT(xn, N):
     Xm = []
@@ -11,18 +17,43 @@ def DFT(xn, N):
         
     return Xm
 
+#fo = 1300
+#fs = 8000
+#N = 8
+#n = np.arange(N)
+#xn = np.sin(2*np.pi*fo*n/fs) + .5*np.sin(2*np.pi*2*fo*n/fs + 3*np.pi/4)
 
-fo = 1000
+#xn = 2*np.cos(2*np.pi*3*1500*n/4000 + np.pi/4)
+#xn = [9,9,9,9,9,9,9,9]
+#xn = [1,0,0,0,0,0,0,0]
+#xn = [0,1,0,0,0,0,0,0]
+
+#define xn
 fs = 8000
 N = 8
+
+Ao = 2
+k = 3
+fo = k*fs/N
+phi = 0 #np.pi/4
+
 n = np.arange(N)
+xn = Ao * np.cos( 2*np.pi * fo * n/fs + phi )
 
-xn = np.sin(2*np.pi*fo*n/fs) + .5*np.sin(2*np.pi*2*fo*n/fs + 3*np.pi/4)
+#do DFT
+Xn = DFT(xn, N)
 
+#print stuff
 print "x(n):"
 print xn
 
 print "\nX(n)"
-Xn = DFT(xn, N)
-for xn in Xn:
-    print('{:.4f}'.format(xn))
+for x in Xn:
+    print('{:.4f}'.format(x))
+
+#plot stuff
+fig, axarr = plt.subplots(2, sharex=False)
+plotStem(axarr[0], n, xn, "x(n)")
+plotStem(axarr[1], n, np.absolute(Xn), "|X(n)|")
+
+plt.show()
