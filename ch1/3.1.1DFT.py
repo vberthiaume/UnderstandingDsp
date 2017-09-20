@@ -1,14 +1,15 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def plotStem(axarr, x, y, title):
-    markerline, stemlines, baseline = axarr.stem(x, y, '-.')
-    axarr.set_xlim([min(x)-1,max(x)+1])
+def plotStem(axarr, y, title):
+    markerline, stemlines, baseline = axarr.stem(y, '-.')
+    axarr.set_xlim([-1,len(y)+1])
     axarr.set_ylim([min(y)-1,max(y)+1])
     axarr.set_title(title)
 
-def DFT(xn, N):
+def DFT(xn):
     Xm = []
+    N = len(xn)
     for m in np.arange(N):
         xm = 0
         for n in np.arange(N):
@@ -17,45 +18,53 @@ def DFT(xn, N):
         
     return Xm
 
-fo = 1000
-fs = 8000
-N = 8
-n = np.arange(N)
-xn = np.sin(2*np.pi*fo*n/fs) + .5*np.sin(2*np.pi*2*fo*n/fs + 3*np.pi/4)
 
+#DEFINE x(n)
+###############################################################
+#fo = 1000
+#fs = 8000
+#N = 8
+#n = np.arange(N)
+#xn = np.sin(2*np.pi*fo*n/fs) + .5*np.sin(2*np.pi*2*fo*n/fs + 3*np.pi/4)
+###############################################################
 #xn = 2*np.cos(2*np.pi*3*1500*n/4000 + np.pi/4)
 #xn = [9,9,9,9,9,9,9,9]
 #xn = [1,0,0,0,0,0,0,0]
 #xn = [0,1,0,0,0,0,0,0]
+###############################################################
+fs = 8000
+N = 16
+NPadded = N
+Ao = 1
+k = 3
+fo = k*fs/N
+phi = 0 #np.pi/4
 
-#define xn
-#fs = 8000
-#N = 8
+n = np.arange(N)
+noise = np.random.rand(N)
 
-#Ao = 2
-#k = 3
-#fo = k*fs/N
-#phi = 0 #np.pi/4
+n       = np.pad(n, (0,NPadded-N), 'constant', constant_values=(0))
+noise   = np.pad(noise, (0,NPadded-N), 'constant', constant_values=(0))
 
-#n = np.arange(N)
-#xn = Ao * np.cos( 2*np.pi * fo * n/fs + phi )
+xn = Ao * np.sin( 2*np.pi * fo * n/fs + phi ) + noise
+###############################################################
 
 #do DFT
-Xn = DFT(xn, N)
-XnMag = np.absolute(Xn)
-XnPhase = np.angle(Xn)
+Xm      = DFT(xn)
+XmMag   = np.absolute(Xm)
+XmPhase = np.angle(Xm)
 
 #print stuff
 print "x(n):", xn
 print "\nX(n)"
-for x in Xn:
+for x in Xm:
     print('{:.4f}'.format(x))
 
 #plot stuff
 fig, axarr = plt.subplots(3, sharex=False)
-plotStem(axarr[0], n, xn, "x(n)")
-plotStem(axarr[1], n, XnMag, "|X(n)|")
-plotStem(axarr[2], n, XnPhase, "phase X(n)")
+plotStem(axarr[0], xn, "x(n)")
+plotStem(axarr[1], XmMag, "|X(m)|")
+plotStem(axarr[2], XmPhase, "phase X(m)")
 
 plt.tight_layout()
 plt.show()
