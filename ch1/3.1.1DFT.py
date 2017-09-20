@@ -42,6 +42,8 @@ xn = Ao * np.cos( 2*np.pi * fo * n/fs + phi )
 
 #do DFT
 Xn = DFT(xn, N)
+XnMag = np.absolute(Xn)
+XnPhase = [np.arctan(np.imag(x) / np.real(x)) for x in Xn]
 
 #print stuff
 print "x(n):"
@@ -52,8 +54,10 @@ for x in Xn:
     print('{:.4f}'.format(x))
 
 #plot stuff
-fig, axarr = plt.subplots(2, sharex=False)
+fig, axarr = plt.subplots(3, sharex=False)
 plotStem(axarr[0], n, xn, "x(n)")
-plotStem(axarr[1], n, np.absolute(Xn), "|X(n)|")
+plotStem(axarr[1], n, XnMag, "|X(n)|")
+plotStem(axarr[2], n, XnPhase, "phase X(n)")
 
+plt.tight_layout()
 plt.show()
