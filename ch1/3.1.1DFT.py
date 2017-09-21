@@ -39,14 +39,14 @@ Ao = 1
 k = 3
 fo = k*fs/N
 phi = 0 #np.pi/4
-
 n = np.arange(N)
-noise = np.random.rand(N)
+#n = np.linspace(-N, N, 32)
+#noise = 4*np.random.rand(N) - 2
 
 n       = np.pad(n, (0,NPadded-N), 'constant', constant_values=(0))
-noise   = np.pad(noise, (0,NPadded-N), 'constant', constant_values=(0))
+#noise   = np.pad(noise, (0,NPadded-N), 'constant', constant_values=(0))
 
-xn = Ao * np.sin( 2*np.pi * fo * n/fs + phi ) + noise
+xn = Ao * np.sin( 2*np.pi * fo * n/fs + phi ) #+ noise
 ###############################################################
 
 #do DFT
