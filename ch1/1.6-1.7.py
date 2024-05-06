@@ -20,7 +20,7 @@ fig, axarr = plt.subplots(3, sharex=False)
 
 axarr[0].plot(n, x1)
 axarr[0].set_title('x1')
-    
+
 axarr[1].plot(n, x2)
 axarr[1].set_title('x2')
 
