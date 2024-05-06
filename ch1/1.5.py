@@ -15,10 +15,12 @@ n = np.arange(nMax)
 # hertz are cycles per seconds
 
 # x1 = np.sin (np.pi*n)
+#NOW HERE NEED TO UNDERSTAND THE RELATIONSHIP BETWEEN N, F, FS, TS EVERYTING LOL
+f = 2
+fs = 32 #sampling frequency, ie how many samples for one cycle
+ts = 1/fs
 
-Fs = 32 #sampling frequency, ie how many points
-f = 1
-x = np.sin (2 * np.pi * f * n / Fs)
+x = np.sin (2 * np.pi * f * n * ts)
 
 
 # doc for plot: https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html
