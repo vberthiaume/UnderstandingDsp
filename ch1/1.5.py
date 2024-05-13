@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # these are constants that just need to be set for a given problem
-fo = 1                  # fo is the frequency of my signal, the sine wave, in Hz. So my signal has fo cycles per second.
+fo = 200                # fo is the frequency of my signal, the sine wave, in Hz, or cycles per second.
                         # This doesn't actually change anything to the temporal plot below,
                         # but presumably would be shown in the frequency domain
 numPointsPerCycle = 32  # how many sample points in one cycle of the signal
