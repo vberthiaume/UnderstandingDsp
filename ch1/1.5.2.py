@@ -19,9 +19,9 @@ x1 = np.sin (2*np.pi * fo * n * ts)
 x2 = np.sin (2*np.pi * 3 * n * ts)
 y = np.square (np.abs(x1 + x2))
 
-#fft
+#fft -- this isn't quite right but I have no idea what I'm doing. Get back to this!
 yf = scipy.fftpack.fft (y)
-yf = 2.0/numPoints * yf[:numPoints//2]
+yf = 1/numPoints * yf[:numPoints//2]
 xf = np.linspace (0.0, 1.0/(2.0*ts), numPoints//2)
 
 # display the thing
