@@ -2,18 +2,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # get an input sinusoid
-nMax = 10           
+nMax = 10
 n = np.arange(nMax)
 
 #1.6
-#x1 = np.cos(np.pi*n)   
-#x2 = np.cos((np.pi*n)/2)   
-#x3 = [np.cos(0) for x in n]
+x1 = np.cos(np.pi*n)
+x2 = np.cos((np.pi*n)/2)
+x3 = [np.cos(0) for x in n]
 
 #1.7
-x1 = [0 if abs(np.sin(np.pi*x)) < 1e-5 else np.sin(np.pi*x) for x in n]
-x2 = np.sin((np.pi*n)/2)   
-x3 = [np.sin(0) for x in n]
+# x1 = [0 if abs(np.sin(np.pi*x)) < 1e-5 else np.sin(np.pi*x) for x in n]
+# x2 = np.sin((np.pi*n)/2)   
+# x3 = [np.sin(0) for x in n]
 
 # display the thing
 fig, axarr = plt.subplots(3, sharex=False)
