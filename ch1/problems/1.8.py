@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # get an input sinusoid
-nMax = 8           
+nMax = 8
 n = np.arange (nMax)
 
 #1.8
