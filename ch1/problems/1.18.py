@@ -17,16 +17,16 @@ yshift = xshift[::2]
 
 # display the thing
 fig, axarr = plt.subplots(4, sharex=False)
-axarr[0].plot(n[:numPoints2], x[:numPoints2], '.')
+axarr[0].stem(n[:numPoints2], x[:numPoints2], '.')
 axarr[0].set_title('x')
 
-axarr[1].plot(n[:numPoints2], y, '.')
+axarr[1].stem(n[:numPoints2], y, '.')
 axarr[1].set_title('y')
 
-axarr[2].plot(n[:numPoints2], xshift[:numPoints2], '.')
+axarr[2].stem(n[:numPoints2], xshift[:numPoints2], '.')
 axarr[2].set_title('xshift')
 
-axarr[3].plot(n[:numPoints2], yshift, '.')
+axarr[3].stem(n[:numPoints2], yshift, '.')
 axarr[3].set_title('yshift')
 axarr[3].set_ylim([-1, 1])
 
