@@ -2,16 +2,29 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.ndimage import shift
 
+#21: 
 # Draw the unit impulse responses (the output sequences when the input is a
 # unit sample impulse applied at time n=0) of the four processes listed
 # in Problem 1.20. Let A = 0.5 for the leaky integrator. Assume that all sample values
 # within the systems are zero at time n = 0
 
+#22:
+# the same, but x is a step function which is just ones. Another definition for the step
+# function is that it is the cumulative sum of unit impulse responses. Not sure how that
+# is more useful yet
+
+#if do22 is false we're doing 21 :thinkaboutit:
+do22 = True
+
 # set up our basic variables
 num = 10
 n = np.arange (num)
-x = np.zeros (num)
-x[0] = 1
+if do22:
+    x = np.ones (num)
+else:
+    x = np.zeros (num)
+    x[0] = 1
+
 y = np.zeros (num)
 
 # (a) a 4th-order comb filter: y(n) = x(n) – x(n–4),
